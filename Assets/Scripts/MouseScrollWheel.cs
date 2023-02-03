@@ -17,6 +17,6 @@ public class MouseScrollWheel : MonoBehaviour
     void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        transform.position += transform.forward * scroll * scrollSpeed, 0);
+        transform.position += transform.forward * scroll * scrollSpeed;
     }
 }
