@@ -6,7 +6,7 @@ public class ScreenMovement : MonoBehaviour
 {
     public float speed = 5f;
     public float returnSpeed = 2f;
-    public float resetTime = 1f;
+    public float resetTime = 0.75f;
 
     private Vector3 originalPosition;
     private float timer;
