@@ -1,3 +1,4 @@
+using SpriteShapeExtras;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ public class ShapeToSpline : MonoBehaviour
     [SerializeField]
     private Root m_root;
 
+    [SerializeField]
+    private EdgeCollider2D m_collider;
+
     private void Start()
     {
         transform.SetParent(null);
@@ -32,6 +36,7 @@ public class ShapeToSpline : MonoBehaviour
         {
             FitToSpline();
         }
+        m_controller.BakeCollider();
     }
 
     private void FitToSpline()
@@ -40,16 +45,32 @@ public class ShapeToSpline : MonoBehaviour
         var splineTo = m_controller.spline;
         splineTo.Clear();
 
+        m_collider.points = new UnityEngine.Vector2[0];
+
         if (splineFrom.Knots.Count() > 1)
         {
+            UnityEngine.Vector2[] newPoints = new UnityEngine.Vector2[0];
+            if (splineFrom.Knots.Count() > 2)
+            {
+                newPoints = new UnityEngine.Vector2[splineFrom.Knots.Count() - 2];
+            }
+
             float3 rotatedVector;
             float3 adjustedPos;
+            int i = 0;
             foreach (var knot in splineFrom)
             {
                 rotatedVector = math.mul(knot.Rotation, UnityEngine.Vector3.right);
                 adjustedPos = knot.Position + (rotatedVector * 0.64f);
                 splineTo.InsertPointAt(0, adjustedPos);
                 splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
+
+                if (i < splineFrom.Knots.Count()-2)
+                {
+                    newPoints[i] = new UnityEngine.Vector2(knot.Position.x, knot.Position.y);
+                }
+
+                i++;
             }
             rotatedVector = math.mul(m_root.transform.rotation, UnityEngine.Vector3.right);
             adjustedPos = (float3)(m_root.transform.position) + (rotatedVector * 0.64f);
@@ -64,6 +85,8 @@ public class ShapeToSpline : MonoBehaviour
             m_controller.enabled = false;
             m_controller.enabled = true;
             m_controller.RefreshSpriteShape();
+
+            m_collider.points = newPoints;
         }
     }
 }

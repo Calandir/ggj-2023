@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 1061150372886008757}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5600735321673181688
 MonoBehaviour:
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startingRoot: {fileID: 3036491980932331350}
   m_controlledRoot: {fileID: 3036491980932331350}
+  m_newRootPrefab: {fileID: 4511377581726981368, guid: 6c079ba98da56c64cafbe1d0807b3211, type: 3}
 --- !u!1001 &1493061320440048558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1019115970056985876, guid: 6c079ba98da56c64cafbe1d0807b3211, type: 3}
       propertyPath: m_Name
-      value: RootBase
+      value: Root
       objectReference: {fileID: 0}
     - target: {fileID: 1873952608802093083, guid: 6c079ba98da56c64cafbe1d0807b3211, type: 3}
       propertyPath: m_RootOrder
