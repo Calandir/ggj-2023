@@ -77,6 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aecbc0580f84c54eb6207e16bb369b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spline: {fileID: 6962283055782149812}
+  m_minDistanceBetweenSplineKnots: 0.75
+  m_distance: 0
+  m_segmentPrefab: {fileID: 9181672237292484047, guid: 39fc144970b8e3a4aa2195d9296f33d2, type: 3}
 --- !u!1 &2960266540895804339
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,49 +165,9 @@ MonoBehaviour:
     m_Closed: 0
   m_Splines:
   - m_EditModeType: 1
-    m_Knots:
-    - Position:
-        x: 0
-        y: 0
-        z: 0
-      TangentIn:
-        x: -0
-        y: -0
-        z: -1
-      TangentOut:
-        x: 0
-        y: 0
-        z: 1
-      Rotation:
-        value:
-          x: 0
-          y: 0
-          z: 0
-          w: 1
-    - Position:
-        x: 1
-        y: 0
-        z: 0
-      TangentIn:
-        x: -0
-        y: -0
-        z: -1
-      TangentOut:
-        x: 0
-        y: 0
-        z: 1
-      Rotation:
-        value:
-          x: 0
-          y: 0
-          z: 0
-          w: 1
+    m_Knots: []
     m_Length: -1
-    m_MetaData:
-    - Mode: 2
-      Tension: 0.33333334
-    - Mode: 2
-      Tension: 0.33333334
+    m_MetaData: []
     m_Closed: 0
   m_Knots:
     m_KnotsLink: []
