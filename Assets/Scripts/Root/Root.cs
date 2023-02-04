@@ -21,19 +21,18 @@ public class Root : MonoBehaviour
     private RootMover m_movement;
     public RootMover Movement => m_movement;
 
-    [SerializeField]
-    private Root m_newRootPrefab;
+    [SerializeField] 
+    private GameObject m_endObj;
 
-    internal Root[] Split()
+    internal Root[] Split(Root newRootPrefab)
     {
         Debug.Log("Split");
-        m_canGrow = false;
-        m_rigidbody.isKinematic = true;
-        Root rootLeft = Instantiate(m_newRootPrefab);
+        Finished();
+        Root rootLeft = Instantiate(newRootPrefab, transform.position, transform.rotation);
         rootLeft.Initialise();
         rootLeft.transform.localEulerAngles = new Vector3(
             rootLeft.transform.localEulerAngles.x, rootLeft.transform.localEulerAngles.y, rootLeft.transform.localEulerAngles.z - 45f);
-        Root rootRight = Instantiate(m_newRootPrefab);
+        Root rootRight = Instantiate(newRootPrefab, transform.position, transform.rotation);
         rootRight.Initialise();
         rootRight.transform.localEulerAngles = new Vector3(
             rootRight.transform.localEulerAngles.x, rootRight.transform.localEulerAngles.y, rootRight.transform.localEulerAngles.z + 45f);
@@ -44,5 +43,14 @@ public class Root : MonoBehaviour
     private void Initialise()
     {
         m_canGrow = true;
+        RootsController.RootCreatedAction?.Invoke(this);
+    }
+
+    private void Finished()
+    {
+        m_canGrow = false;
+        m_rigidbody.isKinematic = true;
+        m_endObj.gameObject.SetActive(false);
+        RootsController.RootFinishedAction?.Invoke(this);
     }
 }

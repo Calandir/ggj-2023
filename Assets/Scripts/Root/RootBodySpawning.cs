@@ -35,6 +35,7 @@ public class RootBodySpawning : MonoBehaviour
             GameObject segment = Instantiate(m_segmentPrefab, m_spline.transform);
             segment.transform.position = transform.position;
             segment.transform.up = -transform.up;
+            segment.transform.SetParent(m_spline.transform);
         }
 
         var lastKnot = m_spline.Spline.Knots.Last();

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ public class RootsController : MonoBehaviour
 
     bool moveHeld;
     Vector2 lastMovementInput;
+
+    [SerializeField]
+    private Root m_newRootPrefab;
+
+    public static Action<Root> RootCreatedAction;
+    public static Action<Root> RootFinishedAction;
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -39,7 +46,7 @@ public class RootsController : MonoBehaviour
         {
             if (root.CanGrow)
             {
-                float controlledMultiplier = (root == m_controlledRoot) ? 1f : 0.25f;
+                float controlledMultiplier = (root == m_controlledRoot) ? 1f : 0.5f;
                 root.Movement.Grow(controlledMultiplier);
             }
         }
@@ -68,7 +75,7 @@ public class RootsController : MonoBehaviour
         Debug.Log($"Fire Input: {fire}");
         if (fire == 1f)
         {
-            Root[] newRoots = ControlledRoot.Split();
+            Root[] newRoots = ControlledRoot.Split(m_newRootPrefab);
             m_controlledRoot = newRoots[1];
         }
     }
