@@ -179,11 +179,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LionelStuff
       objectReference: {fileID: 0}
-    - target: {fileID: 6035170509016651517, guid: ba86d6b07236b7c43939aab2734ade6d, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLookInput
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 690976093, guid: ba86d6b07236b7c43939aab2734ade6d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -300,11 +297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 409310499804160401, guid: 3928aadd1cd4119428239132582ca72d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26
+      value: 27.1
       objectReference: {fileID: 0}
     - target: {fileID: 409310499804160401, guid: 3928aadd1cd4119428239132582ca72d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 409310499804160401, guid: 3928aadd1cd4119428239132582ca72d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -337,6 +334,10 @@ PrefabInstance:
     - target: {fileID: 409310499804160404, guid: 3928aadd1cd4119428239132582ca72d, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 409310499804160406, guid: 3928aadd1cd4119428239132582ca72d, type: 3}
+      propertyPath: orthographic size
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
