@@ -240,8 +240,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: LionelStuff
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 690976093, guid: ba86d6b07236b7c43939aab2734ade6d, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
