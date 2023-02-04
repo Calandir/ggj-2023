@@ -8,7 +8,7 @@ public class Root : MonoBehaviour
 {
     [SerializeField]
     private List<Root> m_childRoots;
-    public List<Root> ChildRoots;
+    public List<Root> ChildRoots => m_childRoots;
 
     [SerializeField]
     private bool m_canGrow = true;
