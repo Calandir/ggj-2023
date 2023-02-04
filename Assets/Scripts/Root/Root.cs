@@ -25,7 +25,26 @@ public class Root : MonoBehaviour
     private SpriteRenderer m_endObj;
     public SpriteRenderer EndObj => m_endObj;
 
-    internal Root[] Split(Root newRootPrefab)
+    private RootEndHitbox m_rootEndHitbox = null;
+
+    private bool m_isFinished = false;
+
+	private void Start()
+	{
+		m_rootEndHitbox = GetComponentInChildren<RootEndHitbox>(includeInactive: true);
+	}
+
+	private void Update()
+	{
+		if (!m_isFinished && m_rootEndHitbox.HasCollidedWithRock)
+        {
+            Finished();
+
+            m_isFinished = true;
+        }
+	}
+
+	internal Root[] Split(Root newRootPrefab)
     {
         Debug.Log("Split");
         Finished();
