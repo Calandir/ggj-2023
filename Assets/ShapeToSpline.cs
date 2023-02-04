@@ -19,6 +19,13 @@ public class ShapeToSpline : MonoBehaviour
     [SerializeField]
     private Root m_root;
 
+    private void Start()
+    {
+        transform.SetParent(null);
+        transform.localPosition = UnityEngine.Vector3.zero;
+        transform.localRotation = UnityEngine.Quaternion.identity;
+    }
+
     void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Q)) 

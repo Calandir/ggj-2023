@@ -40,7 +40,7 @@ public class RootsController : MonoBehaviour
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         lastMovementInput = context.ReadValue<Vector2>();
-        Debug.Log($"Move Input: {lastMovementInput}");
+        //Debug.Log($"Move Input: {lastMovementInput}");
         moveHeld = true;
     }
 
