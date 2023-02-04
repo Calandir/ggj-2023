@@ -31,8 +31,12 @@ public class Root : MonoBehaviour
         m_rigidbody.isKinematic = true;
         Root rootLeft = Instantiate(m_newRootPrefab);
         rootLeft.Initialise();
+        rootLeft.transform.localEulerAngles = new Vector3(
+            rootLeft.transform.localEulerAngles.x, rootLeft.transform.localEulerAngles.y, rootLeft.transform.localEulerAngles.z - 45f);
         Root rootRight = Instantiate(m_newRootPrefab);
         rootRight.Initialise();
+        rootRight.transform.localEulerAngles = new Vector3(
+            rootRight.transform.localEulerAngles.x, rootRight.transform.localEulerAngles.y, rootRight.transform.localEulerAngles.z + 45f);
         m_childRoots = new Root[] { rootLeft, rootRight};
         return m_childRoots;
     }
