@@ -7,8 +7,11 @@ using UnityEngine;
 public class Root : MonoBehaviour
 {
     [SerializeField]
-    private List<Root> m_childRoots;
-    public List<Root> ChildRoots => m_childRoots;
+    private Rigidbody2D m_rigidbody;
+
+    [SerializeField]
+    private Root[] m_childRoots;
+    public Root[] ChildRoots => m_childRoots;
 
     [SerializeField]
     private bool m_canGrow = true;
@@ -18,15 +21,17 @@ public class Root : MonoBehaviour
     private RootMover m_movement;
     public RootMover Movement => m_movement;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Root m_newRootPrefab;
 
-    // Update is called once per frame
-    void Update()
+    internal Root[] Split()
     {
-        
+        Debug.Log("Split");
+        m_canGrow = false;
+        m_rigidbody.isKinematic = true;
+        Root rootLeft = Instantiate(m_newRootPrefab);
+        Root rootRight = Instantiate(m_newRootPrefab);
+        m_childRoots = new Root[] { rootLeft, rootRight};
+        return m_childRoots;
     }
 }

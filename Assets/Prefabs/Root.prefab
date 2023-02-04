@@ -48,9 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76862c3b4659d5d45be95de86d73e1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_rigidbody: {fileID: 3146949218545876727}
   m_childRoots: []
   m_canGrow: 1
   m_movement: {fileID: 189856665538184434}
+  m_newRootPrefab: {fileID: 4511377581726981368}
 --- !u!114 &189856665538184434
 MonoBehaviour:
   m_ObjectHideFlags: 0

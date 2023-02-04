@@ -62,6 +62,16 @@ public class RootsController : MonoBehaviour
         return rootsToReturn.ToArray();
     }
 
+    public void OnFireInput(InputAction.CallbackContext context)
+    {
+        float fire = context.ReadValue<float>();
+        Debug.Log($"Fire Input: {fire}");
+        if (fire == 1f)
+        {
+            Root[] newRoots = ControlledRoot.Split();
+        }
+    }
+
     public void OnLookInput(InputAction.CallbackContext context)
     {
         Vector2 look = context.ReadValue<Vector2>();
