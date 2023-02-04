@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterTile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: a2198eb19823b3843aa15c7b0732d827, type: 3}
-  m_Color: {r: 0, g: 0.7161298, b: 1, a: 1}
+  m_Color: {r: 0.5226415, g: 1, b: 0.9839543, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -34,4 +34,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  m_startingWaterPerTile: 1
+  m_WaterPerTile: 1
