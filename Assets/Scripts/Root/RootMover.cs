@@ -14,13 +14,13 @@ public class RootMover : MonoBehaviour
     {
         float degrees = input * m_rotationMultiplier * Time.deltaTime;
         Vector3 newEuler = transform.eulerAngles;
-        newEuler.z += degrees;
+        newEuler.z -= degrees;
         transform.eulerAngles = newEuler;
     }
 
     internal void Grow(float controlledMultiplier)
     {
-        Vector3 movement = controlledMultiplier * m_growMultiplier * Time.deltaTime * -transform.up;
+        Vector3 movement = controlledMultiplier * m_growMultiplier * Time.deltaTime * transform.up;
         transform.position += movement;
     }
 

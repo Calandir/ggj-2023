@@ -31,6 +31,7 @@ public class RootBodySpawning : MonoBehaviour
         if (m_distance == -1 || m_distance >= m_minDistanceBetweenSplineKnots)
         {
             BezierKnot knot = new BezierKnot(transform.position);
+            knot.Rotation = transform.rotation;
             m_spline.Spline.Add(knot);
             //GameObject segment = Instantiate(m_segmentPrefab, m_spline.transform);
             //segment.transform.position = transform.position;
