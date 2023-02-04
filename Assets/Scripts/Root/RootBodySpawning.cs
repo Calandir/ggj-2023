@@ -32,10 +32,10 @@ public class RootBodySpawning : MonoBehaviour
         {
             BezierKnot knot = new BezierKnot(transform.position);
             m_spline.Spline.Add(knot);
-            GameObject segment = Instantiate(m_segmentPrefab, m_spline.transform);
-            segment.transform.position = transform.position;
-            segment.transform.up = -transform.up;
-            segment.transform.SetParent(m_spline.transform);
+            //GameObject segment = Instantiate(m_segmentPrefab, m_spline.transform);
+            //segment.transform.position = transform.position;
+            //segment.transform.up = -transform.up;
+            //segment.transform.SetParent(m_spline.transform);
         }
 
         var lastKnot = m_spline.Spline.Knots.Last();
