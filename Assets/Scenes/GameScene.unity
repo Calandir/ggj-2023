@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LionelStuff
       objectReference: {fileID: 0}
+    - target: {fileID: 6035170509016651517, guid: ba86d6b07236b7c43939aab2734ade6d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLookInput
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
