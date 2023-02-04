@@ -34,6 +34,11 @@ public class WaterDrinker : MonoBehaviour
 
 	private Vector3Int GetPositionAsVector3Int(Vector3 vector3)
 	{
-		return new Vector3Int(Mathf.RoundToInt(vector3.x), Mathf.RoundToInt(vector3.y), Mathf.RoundToInt(vector3.z));
+		// Offset so drinking happens from the bottom of the root
+		vector3 -= new Vector3(0.0f, 1.5f, 0.0f);
+
+		Vector3Int position = new Vector3Int((int)Mathf.Round(vector3.x - 0.5f), (int)Mathf.Round(vector3.y + 0.5f), (int)Mathf.Round(vector3.z - 0.5f));
+
+		return position;
 	}
 }
