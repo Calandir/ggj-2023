@@ -22,7 +22,8 @@ public class Root : MonoBehaviour
     public RootMover Movement => m_movement;
 
     [SerializeField] 
-    private GameObject m_endObj;
+    private SpriteRenderer m_endObj;
+    public SpriteRenderer EndObj => m_endObj;
 
     internal Root[] Split(Root newRootPrefab)
     {

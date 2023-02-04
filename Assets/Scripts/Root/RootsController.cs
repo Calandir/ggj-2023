@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements.Experimental;
 
 public class RootsController : MonoBehaviour
 {
@@ -14,7 +15,13 @@ public class RootsController : MonoBehaviour
 
     [SerializeField]
     private Root m_controlledRoot;
-    public Root ControlledRoot => m_controlledRoot;
+    public Root ControlledRoot { get => m_controlledRoot; set => SetControlledRoot(value); }
+    private void SetControlledRoot(Root value)
+    {
+        m_controlledRoot.EndObj.color = Color.white;
+        m_controlledRoot = value;
+        m_controlledRoot.EndObj.color = Color.green;
+    }
 
     bool moveHeld;
     Vector2 lastMovementInput;
@@ -24,6 +31,11 @@ public class RootsController : MonoBehaviour
 
     public static Action<Root> RootCreatedAction;
     public static Action<Root> RootFinishedAction;
+
+    private void Start()
+    {
+        ControlledRoot = m_startingRoot;
+    }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -36,9 +48,9 @@ public class RootsController : MonoBehaviour
     {
         if (moveHeld && lastMovementInput.magnitude > float.Epsilon)
         {
-            if (m_controlledRoot.CanGrow)
+            if (ControlledRoot.CanGrow)
             {
-                m_controlledRoot.Movement.Rotate(lastMovementInput.x);
+                ControlledRoot.Movement.Rotate(lastMovementInput.x);
             }
         }
 
@@ -47,7 +59,7 @@ public class RootsController : MonoBehaviour
         {
             if (root.CanGrow)
             {
-                float controlledMultiplier = (root == m_controlledRoot) ? 1f : 0.5f;
+                float controlledMultiplier = (root == ControlledRoot) ? 1f : 0.5f;
                 root.Movement.Grow(controlledMultiplier);
             }
         }
@@ -77,7 +89,7 @@ public class RootsController : MonoBehaviour
         if (fire == 1f)
         {
             Root[] newRoots = ControlledRoot.Split(m_newRootPrefab);
-            m_controlledRoot = newRoots[1];
+            ControlledRoot = newRoots[1];
         }
     }
 
@@ -88,9 +100,9 @@ public class RootsController : MonoBehaviour
         if (fire == 1f)
         {
             var roots = GetAllRoots().Where(_x => _x.CanGrow).ToArray();
-            int controlledRootIndex = Array.IndexOf(roots, m_controlledRoot);
+            int controlledRootIndex = Array.IndexOf(roots, ControlledRoot);
             int newIndex = (controlledRootIndex + 1) % roots.Length;
-            m_controlledRoot = roots[newIndex];
+            ControlledRoot = roots[newIndex];
         }
     }
 

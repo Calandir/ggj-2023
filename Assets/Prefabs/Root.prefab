@@ -80,8 +80,7 @@ MonoBehaviour:
   m_childRoots: []
   m_canGrow: 1
   m_movement: {fileID: 189856665538184434}
-  m_endObj: {fileID: 8796313306463242410}
-  m_newRootPrefab: {fileID: 4511377581726981368}
+  m_endObj: {fileID: 4364110924726222115}
 --- !u!114 &189856665538184434
 MonoBehaviour:
   m_ObjectHideFlags: 0
