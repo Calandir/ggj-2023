@@ -69,6 +69,7 @@ public class RootsController : MonoBehaviour
         if (fire == 1f)
         {
             Root[] newRoots = ControlledRoot.Split();
+            m_controlledRoot = newRoots[0];
         }
     }
 

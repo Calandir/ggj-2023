@@ -30,8 +30,15 @@ public class Root : MonoBehaviour
         m_canGrow = false;
         m_rigidbody.isKinematic = true;
         Root rootLeft = Instantiate(m_newRootPrefab);
+        rootLeft.Initialise();
         Root rootRight = Instantiate(m_newRootPrefab);
+        rootRight.Initialise();
         m_childRoots = new Root[] { rootLeft, rootRight};
         return m_childRoots;
+    }
+
+    private void Initialise()
+    {
+        m_canGrow = true;
     }
 }
