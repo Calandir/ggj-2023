@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26e7085fa9f6834388f6b8f21f3fd59, type: 3}
   m_Name: RockTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 313c20f82d912bc48ab6142be11aa149, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6034fb7bd68e02c4d84d7e1913246a10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,4 +34,3 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  m_sprite: {fileID: 21300000, guid: 313c20f82d912bc48ab6142be11aa149, type: 3}

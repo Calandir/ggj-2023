@@ -4,6 +4,9 @@ using UnityEngine.Tilemaps;
 
 public class RootEndHitbox : MonoBehaviour
 {
+	public bool HasCollidedWithRock => m_hasCollidedWithRock;
+	private bool m_hasCollidedWithRock = false;
+
 	private LevelTilemapSingleton m_levelTilemapManager = null;
 	private WaterManager m_waterManager = null;
 
@@ -24,6 +27,10 @@ public class RootEndHitbox : MonoBehaviour
 		{
 			m_waterManager.AwardWater(WaterTile.WATER_PER_TILE);
 			s_consumedWaterLocations.Add(position);
+		}
+		else if (detectedTile is RockTile)
+		{
+			m_hasCollidedWithRock = true;
 		}
 	}
 }
