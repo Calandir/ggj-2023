@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -77,6 +78,19 @@ public class RootsController : MonoBehaviour
         {
             Root[] newRoots = ControlledRoot.Split(m_newRootPrefab);
             m_controlledRoot = newRoots[1];
+        }
+    }
+
+    public void OnSwitchInput(InputAction.CallbackContext context)
+    {
+        float fire = context.ReadValue<float>();
+        Debug.Log($"Switch Input: {fire}");
+        if (fire == 1f)
+        {
+            var roots = GetAllRoots().Where(_x => _x.CanGrow).ToArray();
+            int controlledRootIndex = Array.IndexOf(roots, m_controlledRoot);
+            int newIndex = (controlledRootIndex + 1) % roots.Length;
+            m_controlledRoot = roots[newIndex];
         }
     }
 
