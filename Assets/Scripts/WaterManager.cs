@@ -30,7 +30,11 @@ public class WaterManager : MonoBehaviour
 	public void AwardWater(float amount)
 	{
 		m_currentWater += amount;
-		SFXSingleton.Instance.PlayWaterSFX();
+
+		if (SFXSingleton.Instance != null)
+		{
+			SFXSingleton.Instance.PlayWaterSFX();
+		}
 	}
 
 	public void SpendWater(float amount)
