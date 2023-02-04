@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 6962283055782149812}
-  m_minDistanceBetweenSplineKnots: 0.75
+  m_minDistanceBetweenSplineKnots: 0.5
   m_distance: 0
   m_segmentPrefab: {fileID: 9181672237292484047, guid: 39fc144970b8e3a4aa2195d9296f33d2, type: 3}
 --- !u!114 &5342179917560217932

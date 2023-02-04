@@ -184,6 +184,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3794783121bc6594e8ebfd57e1166480, type: 3}
+--- !u!114 &587481292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7583078391147479484, guid: ba86d6b07236b7c43939aab2734ade6d, type: 3}
+  m_PrefabInstance: {fileID: 621004017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76862c3b4659d5d45be95de86d73e1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &618411225
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,8 +304,8 @@ MonoBehaviour:
   m_SpriteShape: {fileID: 11400000, guid: 084d4587d317de84ab6ab9e3065ac97b, type: 2}
   m_FillPixelPerUnit: 50
   m_StretchTiling: 1
-  m_SplineDetail: 16
-  m_AdaptiveUV: 1
+  m_SplineDetail: 4
+  m_AdaptiveUV: 0
   m_StretchUV: 0
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
@@ -355,8 +366,8 @@ SpriteShapeRenderer:
   m_Sprites:
   - {fileID: 21300000, guid: 91754e5a89e2ca141adb837b64e2433c, type: 3}
   m_LocalAABB:
-    m_Center: {x: 5.461385, y: -2.2613897, z: 0}
-    m_Extent: {x: 17.840178, y: 6.3127146, z: 0}
+    m_Center: {x: 5.461385, y: -2.2107577, z: 0}
+    m_Extent: {x: 17.840178, y: 6.2620826, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &618411228
 Transform:
@@ -387,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_controller: {fileID: 618411226}
   m_spline: {fileID: 621004018}
+  m_root: {fileID: 587481292}
 --- !u!1001 &621004017
 PrefabInstance:
   m_ObjectHideFlags: 0

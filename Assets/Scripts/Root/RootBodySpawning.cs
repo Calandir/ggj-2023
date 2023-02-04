@@ -22,6 +22,7 @@ public class RootBodySpawning : MonoBehaviour
     {
         m_spline.transform.SetParent(null);
         m_spline.transform.localPosition = Vector3.zero;
+        m_spline.transform.localRotation = Quaternion.identity;
         BezierKnot knot = new BezierKnot(transform.position);
         m_spline.Spline.Add(knot);
     }
@@ -37,6 +38,12 @@ public class RootBodySpawning : MonoBehaviour
             //segment.transform.position = transform.position;
             //segment.transform.up = -transform.up;
             //segment.transform.SetParent(m_spline.transform);
+        }
+        if (m_spline.Spline.Knots.Count() > 1)
+        {
+            var firstKnot = m_spline.Spline[0];
+            firstKnot.Rotation = m_spline.Spline[1].Rotation;
+            m_spline.Spline[0] = firstKnot;
         }
 
         var lastKnot = m_spline.Spline.Knots.Last();

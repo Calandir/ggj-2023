@@ -16,9 +16,12 @@ public class ShapeToSpline : MonoBehaviour
     [SerializeField]
     private SplineContainer m_spline;
 
+    [SerializeField]
+    private Root m_root;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        //if (Input.GetKeyDown(KeyCode.Q)) 
         {
             FitToSpline();
         }
@@ -29,15 +32,31 @@ public class ShapeToSpline : MonoBehaviour
         var splineFrom = m_spline.Spline;
         var splineTo = m_controller.spline;
         splineTo.Clear();
-        foreach (var knot in splineFrom)
+
+        if (splineFrom.Knots.Count() > 1)
         {
-            var rotatedVector = math.mul(knot.Rotation, UnityEngine.Vector3.right);
-            float3 adjustedPos = knot.Position + (rotatedVector * 0.64f);
-            splineTo.InsertPointAt(0, adjustedPos);
-            splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
+            float3 rotatedVector;
+            float3 adjustedPos;
+            foreach (var knot in splineFrom)
+            {
+                rotatedVector = math.mul(knot.Rotation, UnityEngine.Vector3.right);
+                adjustedPos = knot.Position + (rotatedVector * 0.64f);
+                splineTo.InsertPointAt(0, adjustedPos);
+                splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
+            }
+            rotatedVector = math.mul(m_root.transform.rotation, UnityEngine.Vector3.right);
+            adjustedPos = (float3)(m_root.transform.position) + (rotatedVector * 0.64f);
+            if (splineTo.GetPointCount() > 0 && (splineTo.GetPosition(0) - (UnityEngine.Vector3)adjustedPos).sqrMagnitude < 0.001f)
+            {
+            }
+            else
+            {
+                splineTo.InsertPointAt(0, adjustedPos);
+            }
+
+            m_controller.enabled = false;
+            m_controller.enabled = true;
+            m_controller.RefreshSpriteShape();
         }
-        m_controller.enabled = false;
-        m_controller.enabled = true;
-        m_controller.RefreshSpriteShape();
     }
 }
