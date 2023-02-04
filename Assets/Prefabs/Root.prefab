@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4511377581726981368}
   - component: {fileID: 189856665538184434}
   - component: {fileID: 6408363457761073667}
+  - component: {fileID: 5342179917560217932}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -111,6 +112,18 @@ MonoBehaviour:
   m_minDistanceBetweenSplineKnots: 0.75
   m_distance: 0
   m_segmentPrefab: {fileID: 9181672237292484047, guid: 39fc144970b8e3a4aa2195d9296f33d2, type: 3}
+--- !u!114 &5342179917560217932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019115970056985876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc29d150d77e5b6408c2a645330e730e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2960266540895804339
 GameObject:
   m_ObjectHideFlags: 0
