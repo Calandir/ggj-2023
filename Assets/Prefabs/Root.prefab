@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5514138047574977942}
   - {fileID: 7985255296198541389}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8497147695484419345
 Rigidbody2D:
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6731370245336073381}
   - component: {fileID: 4040612696157158516}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
