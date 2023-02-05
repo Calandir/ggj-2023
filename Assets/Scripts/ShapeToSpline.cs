@@ -55,14 +55,12 @@ public class ShapeToSpline : MonoBehaviour
                 newPoints = new UnityEngine.Vector2[splineFrom.Knots.Count() - 2];
             }
 
-            float3 rotatedVector;
             float3 adjustedPos;
             int i = 0;
             foreach (var knot in splineFrom)
             {
-                rotatedVector = math.mul(knot.Rotation, UnityEngine.Vector3.right);
-                adjustedPos = knot.Position + (rotatedVector * 0.64f);
-                splineTo.InsertPointAt(0, adjustedPos);
+                adjustedPos = knot.Position;
+                splineTo.InsertPointAt(0, knot.Position);
                 splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
 
                 if (i < splineFrom.Knots.Count()-2)
@@ -72,8 +70,7 @@ public class ShapeToSpline : MonoBehaviour
 
                 i++;
             }
-            rotatedVector = math.mul(m_root.transform.rotation, UnityEngine.Vector3.right);
-            adjustedPos = (float3)(m_root.transform.position) + (rotatedVector * 0.64f);
+            adjustedPos = (float3)(m_root.transform.position);
             if (splineTo.GetPointCount() > 0 && (splineTo.GetPosition(0) - (UnityEngine.Vector3)adjustedPos).sqrMagnitude < 0.001f)
             {
             }
