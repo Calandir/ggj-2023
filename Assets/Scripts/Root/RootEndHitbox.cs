@@ -10,7 +10,7 @@ public class RootEndHitbox : MonoBehaviour
 	private LevelTilemapSingleton m_levelTilemapManager = null;
 	private WaterManager m_waterManager = null;
 
-	private static HashSet<Vector3Int> s_consumedWaterLocations = new HashSet<Vector3Int>();
+	public static HashSet<Vector3Int> s_consumedWaterLocations = new HashSet<Vector3Int>();
 
 	[SerializeField]
 	private bool m_isInRoughDirt = false;

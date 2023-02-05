@@ -21,4 +21,12 @@ public class LevelTilemapSingleton : MonoBehaviour
 
 		s_instance = this;
 	}
+
+	private void OnDestroy()
+	{
+		if (s_instance == this)
+		{
+			s_instance = null;
+		}
+	}
 }

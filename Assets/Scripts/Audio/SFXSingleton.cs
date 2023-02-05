@@ -33,4 +33,12 @@ public class SFXSingleton : MonoBehaviour
 			case 2: AudioSource.PlayOneShot(WaterClip3); break;
 		}
 	}
+
+	private void OnDestroy()
+	{
+		if (s_instance == this)
+		{
+			s_instance = null;
+		}
+	}
 }

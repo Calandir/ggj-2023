@@ -47,6 +47,8 @@ public class RootsController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        RootEndHitbox.s_consumedWaterLocations.Clear();
     }
 
     private void Start()
@@ -177,4 +179,12 @@ public class RootsController : MonoBehaviour
         Vector2 look = context.ReadValue<Vector2>();
         //Debug.Log($"Look Input: {look}");
     }
+
+	private void OnDestroy()
+	{
+		if (Instance == this)
+		{
+			Instance = null;
+		}
+	}
 }

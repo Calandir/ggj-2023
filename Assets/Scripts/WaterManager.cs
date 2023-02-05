@@ -74,4 +74,12 @@ public class WaterManager : MonoBehaviour
 		s_instance = this;
 		return true;
 	}
+
+	private void OnDestroy()
+	{
+		if (s_instance == this)
+		{
+			s_instance = null;
+		}
+	}
 }
