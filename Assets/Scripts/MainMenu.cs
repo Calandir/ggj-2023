@@ -4,7 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public void GoToScene(string sceneName) {
+    [SerializeField]
+    private bool m_isGameOverScreen = false;
+
+	private void OnEnable()
+	{
+		if (m_isGameOverScreen)
+        {
+            MiscUtils.IsGameOver = true;
+        }
+	}
+
+	public void GoToScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
     }
 

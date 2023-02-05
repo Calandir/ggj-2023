@@ -9,6 +9,11 @@ public class Timer : MonoBehaviour
 
 	private void Update()
 	{
+		if (MiscUtils.IsGameOver)
+		{
+			return;
+		}
+
 		float time = Time.time;
 		float timeOneSignificantDigit = (float)(Math.Truncate(time * 10) / 10.0f);
 
