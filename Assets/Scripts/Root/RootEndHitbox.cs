@@ -12,6 +12,10 @@ public class RootEndHitbox : MonoBehaviour
 
 	private static HashSet<Vector3Int> s_consumedWaterLocations = new HashSet<Vector3Int>();
 
+	[SerializeField]
+	private bool m_isInRoughDirt = false;
+	public bool IsInRoughDirt => m_isInRoughDirt;
+
 	private void Start()
 	{
 		m_levelTilemapManager = LevelTilemapSingleton.Instance;
@@ -32,5 +36,7 @@ public class RootEndHitbox : MonoBehaviour
 		{
 			m_hasCollidedWithRock = true;
 		}
-	}
+
+        m_isInRoughDirt = detectedTile is RoughDirtTile;
+    }
 }

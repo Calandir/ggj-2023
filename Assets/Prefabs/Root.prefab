@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rotationMultiplier: 40
   m_growMultiplier: 0.5
+  m_slowedMultiplier: 0.7
 --- !u!114 &6408363457761073667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540cd49536448784ca2b87cf72b6488a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isInRoughDirt: 0
 --- !u!1 &2960266540895804339
 GameObject:
   m_ObjectHideFlags: 0
