@@ -27,8 +27,6 @@ public class Root : MonoBehaviour
 
     private RootEndHitbox m_rootEndHitbox = null;
 
-    private bool m_isFinished = false;
-
 	private void Start()
 	{
 		m_rootEndHitbox = GetComponentInChildren<RootEndHitbox>(includeInactive: true);
@@ -36,11 +34,9 @@ public class Root : MonoBehaviour
 
 	private void Update()
 	{
-		if (!m_isFinished && m_rootEndHitbox.HasCollidedWithRock)
+		if (m_canGrow && m_rootEndHitbox.HasCollidedWithRock)
         {
-            Finished();
-
-            m_isFinished = true;
+            Kill();
         }
 	}
 
@@ -72,5 +68,12 @@ public class Root : MonoBehaviour
         m_rigidbody.isKinematic = true;
         m_endObj.gameObject.SetActive(false);
         RootsController.RootFinishedAction?.Invoke(this);
+    }
+
+    private void Kill()
+    {
+        Finished();
+
+        RootsController.Instance.SwitchRoot();
     }
 }

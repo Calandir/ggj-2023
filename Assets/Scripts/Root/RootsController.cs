@@ -29,8 +29,15 @@ public class RootsController : MonoBehaviour
     [SerializeField]
     private Root m_newRootPrefab;
 
+    public static RootsController Instance;
+
     public static Action<Root> RootCreatedAction;
     public static Action<Root> RootFinishedAction;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -99,7 +106,15 @@ public class RootsController : MonoBehaviour
         Debug.Log($"Switch Input: {fire}");
         if (fire == 1f)
         {
-            var roots = GetAllRoots().Where(_x => _x.CanGrow).ToArray();
+            SwitchRoot();
+        }
+    }
+
+    public void SwitchRoot()
+    {
+        var roots = GetAllRoots().Where(_x => _x.CanGrow).ToArray();
+        if (roots.Length  > 0)
+        {
             int controlledRootIndex = Array.IndexOf(roots, ControlledRoot);
             int newIndex = (controlledRootIndex + 1) % roots.Length;
             ControlledRoot = roots[newIndex];
