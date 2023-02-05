@@ -38,6 +38,7 @@ public class Root : MonoBehaviour
         {
             Kill();
         }
+        m_movement.Slowed = m_rootEndHitbox.IsInRoughDirt;
 	}
 
 	internal Root[] Split(Root newRootPrefab)

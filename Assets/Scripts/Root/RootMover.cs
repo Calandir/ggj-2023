@@ -10,6 +10,11 @@ public class RootMover : MonoBehaviour
     [SerializeField]
     private float m_growMultiplier = 0.5f;
 
+    public bool Slowed { get; internal set; }
+    [SerializeField]
+    private float m_slowedMultiplier = 0.7f;
+    private float CurrentSlowedMultiplier => Slowed ? m_slowedMultiplier : 1f;
+
     internal void Rotate(float input)
     {
         float degrees = input * m_rotationMultiplier * Time.deltaTime;
@@ -20,7 +25,7 @@ public class RootMover : MonoBehaviour
 
     internal void Grow(float controlledMultiplier)
     {
-        Vector3 movement = controlledMultiplier * m_growMultiplier * Time.deltaTime * transform.up;
+        Vector3 movement = controlledMultiplier * m_growMultiplier * CurrentSlowedMultiplier * Time.deltaTime * transform.up;
         transform.position += movement;
     }
 
