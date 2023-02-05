@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 391593575080346906}
   - component: {fileID: 391593575080346907}
   - component: {fileID: 565273143302362354}
+  - component: {fileID: 2903189866187321386}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -13618,3 +13619,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tilemap: {fileID: 391593575080346906}
+--- !u!114 &2903189866187321386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391593575080347365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3a8da6423d48a4eb4aafdac36a470a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirt: {fileID: 11400000, guid: 91b805dcb8da3e04db32bbfda901ff1c, type: 2}
+  TileWater: {fileID: 11400000, guid: 3877d1056050dac4cb90cd3f161da5b3, type: 2}
+  TileRock: {fileID: 11400000, guid: 873ec48d5ae316a4282960fd405cc2dc, type: 2}
+  PROPORTION_WATER_AT_TOP: 0.2
+  PROPORTION_WATER_AT_BOTTOM: 0.05
+  PROPORTION_ROCKS_AT_TOP: 0
+  PROPORTION_ROCKS_AT_BOTTOM: 0.5
+  X_MIN: -37
+  Y_MIN: -50
+  X_SIZE: 48
+  Y_SIZE: 77
