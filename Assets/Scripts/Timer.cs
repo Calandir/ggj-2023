@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
 		float time = Time.time;
 		float timeOneSignificantDigit = (float)(Math.Truncate(time * 10) / 10.0f);
 
-		string timeFormatted = string.Format("{0:00.0}", timeOneSignificantDigit);
+		string timeFormatted = string.Format("{0:0.0}", timeOneSignificantDigit);
 		m_text.text = timeFormatted;
 	}
 }
