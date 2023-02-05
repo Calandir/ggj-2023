@@ -1675,6 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c992df098a3c63efc8e5b4f8706a04fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isGameOverScreen: 0
 --- !u!1 &1699198560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,11 +2122,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Christopher Brown - Developer
+  m_Text: 'Lionel Wood - Developer
 
-    Lionel Wood - Developer
+    Christopher Brown - Developer
 
-    Jonthan
+    Jonathan
     Brown - Composer / Developer
 
     Natasha Bishop -  Graphic Designer
