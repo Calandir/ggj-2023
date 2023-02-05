@@ -31,9 +31,10 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 0}
+  m_InstancedGameObject: {fileID: 8541328035684045122, guid: 0cd365a8af586594bba8dfbe27275c05, type: 3}
   m_Flags: 1
   m_ColliderType: 1
   m_hasWaterSprite: {fileID: 21300000, guid: a2198eb19823b3843aa15c7b0732d827, type: 3}
   m_noWaterSprite: {fileID: 21300000, guid: d40a6fe8624086045a76d577c1fb5b58, type: 3}
   m_WaterPerTile: 1
+  m_Prefab: {fileID: 8541328035684045122, guid: 0cd365a8af586594bba8dfbe27275c05, type: 3}
