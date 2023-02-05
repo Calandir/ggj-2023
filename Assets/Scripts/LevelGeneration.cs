@@ -10,13 +10,16 @@ public class LevelGeneration : MonoBehaviour
 	[SerializeField] TileBase TileDirt;
 	[SerializeField] TileBase TileWater;
 	[SerializeField] TileBase TileRock;
+    [SerializeField] TileBase TileRoughDirt;
 
-	[SerializeField] public float PROPORTION_WATER_AT_TOP;
+    [SerializeField] public float PROPORTION_WATER_AT_TOP;
 	[SerializeField] public float PROPORTION_WATER_AT_BOTTOM;
 	[SerializeField] public float PROPORTION_ROCKS_AT_TOP;
 	[SerializeField] public float PROPORTION_ROCKS_AT_BOTTOM;
+    [SerializeField] public float PROPORTION_ROUGHDIRT_AT_TOP;
+    [SerializeField] public float PROPORTION_ROUGHDIRT_AT_BOTTOM;
 
-	[SerializeField] public int X_MIN;
+    [SerializeField] public int X_MIN;
 	[SerializeField] public int Y_MIN;
 	[SerializeField] public int X_SIZE;
 	[SerializeField] public int Y_SIZE;
@@ -45,8 +48,13 @@ public class LevelGeneration : MonoBehaviour
 			for (int i = 0; i < numRockTiles; i++)
 			{
 				newRow.Add(TileRock);
-			}
-			while (newRow.Count < X_SIZE)
+            }
+            int numRoughDirtTiles = (int)(X_SIZE * Mathf.Lerp(PROPORTION_ROUGHDIRT_AT_BOTTOM, PROPORTION_ROUGHDIRT_AT_TOP, (float)row / Y_SIZE));
+            for (int i = 0; i < numRoughDirtTiles; i++)
+            {
+                newRow.Add(TileRoughDirt);
+            }
+            while (newRow.Count < X_SIZE)
 			{
 				newRow.Add(TileDirt);
 			}
