@@ -1,43 +1,41 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(fileName = "RockTile", menuName = "Tiles/WaterTile")]
+[CreateAssetMenu(fileName = "WaterTile", menuName = "Tiles/WaterTile")]
 public class WaterTile : Tile
 {
-	public static float WATER_PER_TILE => s_waterPerTile;
-	private static float s_waterPerTile = 1.0f;
+	[SerializeField]
+	private Sprite m_hasWaterSprite;
 
-	//[SerializeField]
-	//private Color m_hasWaterColor;
-
-	//[SerializeField]
-	//private Color m_noWaterColor;
+	[SerializeField]
+	private Sprite m_noWaterSprite;
 
 	[SerializeField]
 	private float m_WaterPerTile = 1.0f;
 
-	//private float m_currentWater;
+	public WaterTileData Data => gameObject.GetComponent<WaterTileData>();
 
-	public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
+    public GameObject m_Prefab;
+
+    public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)
+    {
+        tileData.gameObject = m_Prefab;
+        WaterTileData waterData = tileData.gameObject.GetComponent<WaterTileData>();
+        base.GetTileData(location, tilemap, ref tileData);
+    }
+
+    public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
 	{
-		//color = m_hasWaterColor;
-		//m_currentWater = m_startingWaterPerTile;
-
-		s_waterPerTile = m_WaterPerTile;
+		sprite = m_hasWaterSprite;
+        go.GetComponent<WaterTileData>().Initialise(m_WaterPerTile);
 
 		return base.StartUp(position, tilemap, go);
 	}
 
-	//public void ConsumeWater()
-	//{
-	//	if (m_currentWater <= 0.0f)
-	//	{
-	//		return;
-	//	}
-
-	//	WaterManager.Instance.AwardWater(m_currentWater);
-
-	//	m_currentWater = 0.0f;
-	//	color = m_noWaterColor;
-	//}
+    internal void ConsumeWater(WaterTileData waterData)
+    {
+        waterData.ConsumeWater();
+        sprite = m_noWaterSprite;
+    }
 }

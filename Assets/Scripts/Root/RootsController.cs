@@ -49,7 +49,6 @@ public class RootsController : MonoBehaviour
     {
         Instance = this;
 
-        RootEndHitbox.s_consumedWaterLocations.Clear();
         MiscUtils.IsGameOver = false;
 	}
 
