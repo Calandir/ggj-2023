@@ -26,8 +26,8 @@ public class TrackRootEnds : MonoBehaviour
         List<Target> newTargets = new List<Target>(m_targetGroup.m_Targets);
         Target target = new Target();
         target.target = root.transform;
-        target.weight = newTargets[0].weight;
-        target.radius = newTargets[0].radius;
+        target.weight = 1;
+        target.radius = 1;
         newTargets.Add(target);
         m_targetGroup.m_Targets = newTargets.ToArray();
     }
