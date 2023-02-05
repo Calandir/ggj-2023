@@ -119,6 +119,12 @@ public class RootsController : MonoBehaviour
             int newIndex = (controlledRootIndex + 1) % roots.Length;
             ControlledRoot = roots[newIndex];
         }
+        else
+        {
+            GameObject obj = GameObject.Find("Canvas");
+            obj = obj.transform.Find("GameOverPanel").gameObject;
+            obj.SetActive(true);
+        }
     }
 
     public void OnLookInput(InputAction.CallbackContext context)
