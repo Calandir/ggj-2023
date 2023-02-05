@@ -80,6 +80,10 @@ public class Root : MonoBehaviour
         Finished();
         m_deadEndObj.gameObject.SetActive(true);
 
-        RootsController.Instance.SwitchRoot();
+        // Only switch root if the active root died
+        if (RootsController.Instance.ControlledRoot == this)
+        {
+            RootsController.Instance.SwitchRoot();
+        }
     }
 }
