@@ -17,11 +17,12 @@ public class RootsController : MonoBehaviour
     [SerializeField]
     private Root m_controlledRoot;
     public Root ControlledRoot { get => m_controlledRoot; set => SetControlledRoot(value); }
+
     private void SetControlledRoot(Root value)
     {
-        m_controlledRoot.EndObj.color = Color.white;
+        m_controlledRoot.EndObj.sprite = RootEndSprite;
         m_controlledRoot = value;
-        m_controlledRoot.EndObj.color = Color.green;
+        m_controlledRoot.EndObj.sprite = HighlightedRootEndSprite;
     }
 
     bool moveHeld;
@@ -29,6 +30,14 @@ public class RootsController : MonoBehaviour
 
     [SerializeField]
     private Root m_newRootPrefab;
+
+
+    [SerializeField]
+    public Sprite RootEndSprite;
+
+    [SerializeField]
+    public Sprite HighlightedRootEndSprite;
+
 
     public static RootsController Instance;
 
