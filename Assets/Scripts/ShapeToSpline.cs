@@ -47,43 +47,30 @@ public class ShapeToSpline : MonoBehaviour
 
         m_collider.points = new UnityEngine.Vector2[0];
 
-        if (splineFrom.Knots.Count() > 1)
+        UnityEngine.Vector2[] newPoints = new UnityEngine.Vector2[splineFrom.Knots.Count() - 1];
+
+        float3 adjustedPos;
+        int i = 0;
+        foreach (var knot in splineFrom)
         {
-            UnityEngine.Vector2[] newPoints = new UnityEngine.Vector2[0];
-            if (splineFrom.Knots.Count() > 2)
+            adjustedPos = knot.Position;
+            splineTo.InsertPointAt(0, knot.Position);
+            splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
+
+            if (i < splineFrom.Knots.Count()-1)
             {
-                newPoints = new UnityEngine.Vector2[splineFrom.Knots.Count() - 2];
+                newPoints[i] = new UnityEngine.Vector2(knot.Position.x, knot.Position.y);
             }
 
-            float3 adjustedPos;
-            int i = 0;
-            foreach (var knot in splineFrom)
-            {
-                adjustedPos = knot.Position;
-                splineTo.InsertPointAt(0, knot.Position);
-                splineTo.SetTangentMode(0, ShapeTangentMode.Continuous);
-
-                if (i < splineFrom.Knots.Count()-2)
-                {
-                    newPoints[i] = new UnityEngine.Vector2(knot.Position.x, knot.Position.y);
-                }
-
-                i++;
-            }
-            adjustedPos = (float3)(m_root.transform.position);
-            if (splineTo.GetPointCount() > 0 && (splineTo.GetPosition(0) - (UnityEngine.Vector3)adjustedPos).sqrMagnitude < 0.001f)
-            {
-            }
-            else
-            {
-                splineTo.InsertPointAt(0, adjustedPos);
-            }
-
-            m_controller.enabled = false;
-            m_controller.enabled = true;
-            m_controller.RefreshSpriteShape();
-
-            m_collider.points = newPoints;
+            i++;
         }
+        adjustedPos = (float3)(m_root.transform.position);
+        splineTo.InsertPointAt(0, adjustedPos);
+
+        m_controller.enabled = false;
+        m_controller.enabled = true;
+        m_controller.RefreshSpriteShape();
+
+        m_collider.points = newPoints;
     }
 }
