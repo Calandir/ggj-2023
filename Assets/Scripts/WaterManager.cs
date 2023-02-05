@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaterManager : MonoBehaviour
 {
@@ -71,7 +72,9 @@ public class WaterManager : MonoBehaviour
 			GameObject obj = GameObject.Find("Canvas");
 			obj = obj.transform.Find("GameOverPanel").gameObject;
 			obj.SetActive(true);
-		}
+            Text text = obj.transform.Find("Text").GetComponent<Text>();
+            text.text = "You ran out of water!";
+        }
 	}
 
 	private bool ValidateInstance()

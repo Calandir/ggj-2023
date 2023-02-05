@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
 
 public class RootsController : MonoBehaviour
@@ -177,6 +178,8 @@ public class RootsController : MonoBehaviour
             GameObject obj = GameObject.Find("Canvas");
             obj = obj.transform.Find("GameOverPanel").gameObject;
             obj.SetActive(true);
+            Text text = obj.transform.Find("Text").GetComponent<Text>();
+            text.text = "All your roots have died!";
         }
     }
 
