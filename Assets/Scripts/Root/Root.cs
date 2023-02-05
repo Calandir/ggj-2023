@@ -42,6 +42,7 @@ public class Root : MonoBehaviour
 
 	internal Root[] Split(Root newRootPrefab)
     {
+        WaterManager.Instance.SpendWater(WaterManager.Instance.WaterLossPerSplit);
         Debug.Log("Split");
         Finished();
         Root rootLeft = Instantiate(newRootPrefab, transform.position, transform.rotation);

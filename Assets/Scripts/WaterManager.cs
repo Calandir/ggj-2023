@@ -8,6 +8,8 @@ public class WaterManager : MonoBehaviour
 	public float CurrentWaterPercentage => m_currentWater / m_maxWater;
 	private float m_currentWater = 0.0f;
 
+	public float WaterLossPerSplit => m_waterLossPerSplit;
+
 	[SerializeField]
 	private float m_startWater = 20.0f;
 
@@ -16,6 +18,9 @@ public class WaterManager : MonoBehaviour
 
 	[SerializeField]
 	private float m_waterLossPerSecond = 1.0f;
+
+	[SerializeField]
+	private float m_waterLossPerSplit = 1.0f;
 
 	private void Awake()
 	{
