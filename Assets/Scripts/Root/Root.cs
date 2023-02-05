@@ -27,7 +27,10 @@ public class Root : MonoBehaviour
 
     private RootEndHitbox m_rootEndHitbox = null;
 
-	private void Start()
+    [SerializeField]
+    private SpriteRenderer m_deadEndObj;
+
+    private void Start()
 	{
 		m_rootEndHitbox = GetComponentInChildren<RootEndHitbox>(includeInactive: true);
 	}
@@ -75,6 +78,7 @@ public class Root : MonoBehaviour
     private void Kill()
     {
         Finished();
+        m_deadEndObj.gameObject.SetActive(true);
 
         RootsController.Instance.SwitchRoot();
     }
