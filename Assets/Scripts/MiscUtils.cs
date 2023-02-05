@@ -3,6 +3,8 @@ using UnityEngine;
 
 public static class MiscUtils
 {
+	public static bool IsGameOver = false;
+
 	public static Vector3Int Vector3ToVector3Int(Vector3 vector3)
 	{
 		return new Vector3Int(
