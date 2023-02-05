@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements.Experimental;
 
 public class RootsController : MonoBehaviour
@@ -61,6 +62,17 @@ public class RootsController : MonoBehaviour
             }
         }
 
+
+        Root[] nonControlledRoots = GetAllRoots().Where(_x => _x != ControlledRoot).ToArray();
+        foreach (var root in nonControlledRoots)
+        {
+            if (root.CanGrow)
+            {
+                Vector3 destination = GetClosestTileOfType(root.transform.position, typeof(WaterTile));
+                root.Movement.RotateTowards(destination);
+            }
+        }
+
         Root[] roots = GetAllRoots();
         foreach (var root in roots)
         {
@@ -72,6 +84,30 @@ public class RootsController : MonoBehaviour
         }
     }
 
+    Vector3Int GetClosestTileOfType(Vector3 worldPosition, Type targetTileType)
+    {
+        var tilemap = LevelTilemapSingleton.Instance.Tilemap;
+        var grid = tilemap.layoutGrid;
+        Vector3Int closestTile = Vector3Int.zero;
+        float closestDistance = float.MaxValue;
+
+        foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
+        {
+            TileBase tile = tilemap.GetTile(position);
+            if (tile && tile.GetType() == targetTileType)
+            {
+                Vector3 cellCenterWorldPos = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, 0f)));
+                float distance = Vector3.Distance(cellCenterWorldPos, worldPosition);
+                if (distance < closestDistance)
+                {
+                    closestTile = position;
+                    closestDistance = distance;
+                }
+            }
+        }
+
+        return closestTile;
+    }
     private Root[] GetAllRoots()
     {
         Queue<Root> roots = new Queue<Root>();

@@ -23,21 +23,16 @@ public class RootMover : MonoBehaviour
         transform.eulerAngles = newEuler;
     }
 
+    internal void RotateTowards(Vector3 destination)
+    {
+        var posDelta = (destination - transform.position).normalized;
+        Vector3 directionTarget = posDelta;
+        transform.up = Vector3.MoveTowards(transform.up, directionTarget, 0.1f * Time.deltaTime);
+    }
+
     internal void Grow(float controlledMultiplier)
     {
         Vector3 movement = controlledMultiplier * m_growMultiplier * CurrentSlowedMultiplier * Time.deltaTime * transform.up;
         transform.position += movement;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
