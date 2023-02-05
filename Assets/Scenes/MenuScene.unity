@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073993, b: 0.35872683, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -506,9 +506,9 @@ MonoBehaviour:
   m_Text: "Carefully manage the spread of your roots to ensure that you receive enough
     water to grow and stay healthy. As you progress, you'll encounter various obstacles
     such as rocks that can disrupt your water supply. \n\n1. To direct your roots,
-    use the left and right arrow keys\n2. To diverge and split your roots into 2,
-    press the spacebar\n3. To switch between split roots, press the control key.\n\n\nGrow
-    as much as you can before time runs out!\n"
+    use the left and right arrow keys.\n2. To diverge and split your roots into 2,
+    press the spacebar.\n3. To switch between split roots, press the control key.\n\n\nGrow
+    as much as you can before your water runs out!\n"
 --- !u!222 &828852444
 CanvasRenderer:
   m_ObjectHideFlags: 0
