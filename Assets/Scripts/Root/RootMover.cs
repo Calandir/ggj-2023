@@ -15,6 +15,22 @@ public class RootMover : MonoBehaviour
     private float m_slowedMultiplier = 0.7f;
     private float CurrentSlowedMultiplier => Slowed ? m_slowedMultiplier : 1f;
 
+    [SerializeField]
+    private GameObject m_debugTargetObj;
+
+    private void Start()
+    {
+        m_debugTargetObj.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        RootsController.RootFinishedAction += RootFinished;
+    }
+    private void OnDisable()
+    {
+        RootsController.RootFinishedAction -= RootFinished;
+    }
+
     internal void Rotate(float input)
     {
         float degrees = input * m_rotationMultiplier * Time.deltaTime;
@@ -25,14 +41,24 @@ public class RootMover : MonoBehaviour
 
     internal void RotateTowards(Vector3 destination)
     {
+        m_debugTargetObj.gameObject.SetActive(true);
+        m_debugTargetObj.transform.position = destination;
+
         var posDelta = (destination - transform.position).normalized;
         Vector3 directionTarget = posDelta;
-        transform.up = Vector3.MoveTowards(transform.up, directionTarget, 0.1f * Time.deltaTime);
+        transform.up = Vector3.MoveTowards(transform.up, directionTarget, 0.25f * Time.deltaTime);
     }
 
     internal void Grow(float controlledMultiplier)
     {
         Vector3 movement = controlledMultiplier * m_growMultiplier * CurrentSlowedMultiplier * Time.deltaTime * transform.up;
         transform.position += movement;
+    }
+    private void RootFinished(Root root)
+    {
+        if (root.gameObject == gameObject)
+        {
+            m_debugTargetObj.gameObject.SetActive(false);
+        }
     }
 }
