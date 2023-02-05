@@ -49,6 +49,11 @@ public class WaterManager : MonoBehaviour
 
 	private void Update()
 	{
+		if (MiscUtils.IsGameOver)
+		{
+			return;
+		}
+
 		m_currentWater -= m_waterLossPerSecond * Time.deltaTime;
 
 		if (Input.GetKeyDown(KeyCode.LeftBracket))
@@ -61,6 +66,12 @@ public class WaterManager : MonoBehaviour
 		}
 
 		m_currentWater = Mathf.Clamp(m_currentWater, 0.0f, m_maxWater);
+		if (m_currentWater == 0.0f)
+		{
+			GameObject obj = GameObject.Find("Canvas");
+			obj = obj.transform.Find("GameOverPanel").gameObject;
+			obj.SetActive(true);
+		}
 	}
 
 	private bool ValidateInstance()

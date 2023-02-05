@@ -66,6 +66,11 @@ public class RootsController : MonoBehaviour
 
     public void Update()
     {
+        if (MiscUtils.IsGameOver)
+        {
+            return;
+        }
+
         if (moveHeld && lastMovementInput.magnitude > float.Epsilon)
         {
             if (ControlledRoot.CanGrow)
