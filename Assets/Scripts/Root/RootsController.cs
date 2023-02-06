@@ -88,7 +88,7 @@ public class RootsController : MonoBehaviour
         {
             if (root.CanGrow)
             {
-                Vector3 destination = GetClosestTileOfType(root.transform.position, typeof(WaterTile));
+                Vector3 destination = GetClosestTileOfType(root.transform.position, typeof(WaterTile), needsResources: true) + new Vector3(0.5f, 0.5f, 0f);
                 root.Movement.RotateTowards(destination);
             }
         }
@@ -104,10 +104,10 @@ public class RootsController : MonoBehaviour
         }
     }
 
-    Vector3Int GetClosestTileOfType(Vector3 worldPosition, Type targetTileType)
+    Vector3Int GetClosestTileOfType(Vector3 worldPosition, Type targetTileType, bool needsResources = false)
     {
         // TODO Replace
-        var tilemap = LevelTilemapSingleton.Instance.TilemapPriorityList[0];
+        var tilemap = LevelTilemapSingleton.Instance.TilemapPriorityList[1];
         //
         var grid = tilemap.layoutGrid;
         Vector3Int closestTile = Vector3Int.zero;
@@ -115,10 +115,13 @@ public class RootsController : MonoBehaviour
 
         foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
         {
+            // TODO Refactor this
             TileBase tile = tilemap.GetTile(position);
-            if (tile && tile.GetType() == targetTileType)
+            if (tile && tile.GetType() == targetTileType
+                && (!needsResources || (tile is WaterTile waterTile && tilemap.GetInstantiatedObject(position).GetComponent<WaterTileData>().HasWater)))
+            //
             {
-                Vector3 cellCenterWorldPos = grid.LocalToWorld(grid.CellToLocalInterpolated(position + new Vector3(.5f, .5f, 0f)));
+                Vector3 cellCenterWorldPos = grid.LocalToWorld(grid.CellToLocalInterpolated(position)) + new Vector3(0.5f, 0.5f, 0f);
                 float distance = Vector3.Distance(cellCenterWorldPos, worldPosition);
                 if (distance < closestDistance)
                 {
