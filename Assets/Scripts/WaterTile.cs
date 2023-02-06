@@ -28,7 +28,8 @@ public class WaterTile : Tile
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
 	{
 		sprite = m_hasWaterSprite;
-        go.GetComponent<WaterTileData>().Initialise(m_WaterPerTile);
+        var waterData = go.GetComponent<WaterTileData>();
+        if (waterData) waterData.Initialise(m_WaterPerTile);
 
 		return base.StartUp(position, tilemap, go);
 	}

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class Root : MonoBehaviour
 {
@@ -30,6 +32,9 @@ public class Root : MonoBehaviour
     [SerializeField]
     private SpriteRenderer m_deadEndObj;
 
+    [SerializeField]
+    private SplineContainer m_spline;
+
     private void Start()
 	{
 		m_rootEndHitbox = GetComponentInChildren<RootEndHitbox>(includeInactive: true);
@@ -45,11 +50,15 @@ public class Root : MonoBehaviour
         m_movement.BeingPushedDirection = m_rootEndHitbox.BeingPushedDirection;
 	}
 
-	internal Root[] Split(Root newRootPrefab)
+	internal Root[] Split(Root newRootPrefab, GameObject rootSplitPrefab)
     {
         WaterManager.Instance.SpendWater(WaterManager.Instance.WaterLossPerSplit);
         Debug.Log("Split");
         Finished();
+        GameObject rootSplitObj = Instantiate(rootSplitPrefab);
+        var splitPosition = transform.position + (transform.up * 0.05f);
+        var splitRotation = m_spline.Spline.Knots.ToList()[m_spline.Spline.Knots.Count()-2].Rotation;
+        rootSplitObj.transform.SetPositionAndRotation(splitPosition, splitRotation);
         Root rootLeft = Instantiate(newRootPrefab, transform.position, transform.rotation);
         rootLeft.Initialise();
         rootLeft.transform.localEulerAngles = new Vector3(

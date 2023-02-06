@@ -32,6 +32,9 @@ public class RootsController : MonoBehaviour
     [SerializeField]
     private Root m_newRootPrefab;
 
+    [SerializeField]
+    private GameObject m_rootSplitPrefab;
+
 
     [SerializeField]
     public Sprite RootEndSprite;
@@ -150,7 +153,7 @@ public class RootsController : MonoBehaviour
         Debug.Log($"Fire Input: {fire}");
         if (fire == 1f)
         {
-            Root[] newRoots = ControlledRoot.Split(m_newRootPrefab);
+            Root[] newRoots = ControlledRoot.Split(m_newRootPrefab, m_rootSplitPrefab);
             ControlledRoot = newRoots[1];
         }
     }
