@@ -22,22 +22,28 @@ public class RootEndHitbox : MonoBehaviour
 
 	private void Update()
 	{
-		Vector3Int position = MiscUtils.Vector3ToVector3Int(transform.position);
-		TileBase detectedTile = m_levelTilemapManager.Tilemap.GetTile(position);
+		Vector3Int tilePosition = MiscUtils.Vector3ToVector3Int(transform.position);
+		TileBase detectedTile = m_levelTilemapManager.GetTile(tilePosition);
+        Tilemap detectedTilemap = m_levelTilemapManager.GetTilemapForTile(tilePosition);
 
-		if (detectedTile is WaterTile waterTile)
+        if (detectedTile is WaterTile waterTile)
 		{
-			WaterTileData waterData = m_levelTilemapManager.Tilemap.GetInstantiatedObject(position).GetComponent<WaterTileData>();
+			WaterTileData waterData = detectedTilemap.GetInstantiatedObject(tilePosition).GetComponent<WaterTileData>();
 
             if (waterData.HasWater)
             {
 				waterTile.ConsumeWater(waterData);
-                waterTile.RefreshTile(position, m_levelTilemapManager.Tilemap);
+                waterTile.RefreshTile(tilePosition, detectedTilemap);
             }
         }
 		else if (detectedTile is RockTile)
 		{
 			m_hasCollidedWithRock = true;
+		}
+		else if (detectedTile is StreamTile)
+		{
+			var rotation = detectedTilemap.GetTransformMatrix(tilePosition).rotation.eulerAngles;
+            Debug.Log($"Stream Tile Rotation: {rotation}");
 		}
 
         m_isInRoughDirt = detectedTile is RoughDirtTile;

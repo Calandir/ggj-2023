@@ -103,7 +103,9 @@ public class RootsController : MonoBehaviour
 
     Vector3Int GetClosestTileOfType(Vector3 worldPosition, Type targetTileType)
     {
-        var tilemap = LevelTilemapSingleton.Instance.Tilemap;
+        // TODO Replace
+        var tilemap = LevelTilemapSingleton.Instance.TilemapPriorityList[0];
+        //
         var grid = tilemap.layoutGrid;
         Vector3Int closestTile = Vector3Int.zero;
         float closestDistance = float.MaxValue;
