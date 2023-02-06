@@ -43,11 +43,16 @@ public class RootEndHitbox : MonoBehaviour
 		else if (detectedTile is RockTile)
 		{
 			m_hasCollidedWithRock = true;
-		}
-		
-		if (detectedTile is StreamTile)
+        }
+
+
+        Vector3Int centerTilePosition = MiscUtils.Vector3ToVector3Int(transform.parent.position);
+        TileBase detectedCenterTile = m_levelTilemapManager.GetTile(centerTilePosition);
+        Tilemap detectedCenterTilemap = m_levelTilemapManager.GetTilemapForTile(centerTilePosition);
+
+        if (detectedCenterTile is StreamTile)
 		{
-			var rotation = detectedTilemap.GetTransformMatrix(tilePosition).rotation;
+			var rotation = detectedCenterTilemap.GetTransformMatrix(centerTilePosition).rotation;
             Debug.Log($"Stream Tile Rotation: {rotation}");
             Vector3 direction = (rotation * Vector3.right).normalized;
 			m_beingPushedDirection = direction;
@@ -57,6 +62,6 @@ public class RootEndHitbox : MonoBehaviour
             m_beingPushedDirection = Vector3.zero;
         }
 
-        m_isInRoughDirt = detectedTile is RoughDirtTile;
+        m_isInRoughDirt = detectedCenterTile is RoughDirtTile;
     }
 }
