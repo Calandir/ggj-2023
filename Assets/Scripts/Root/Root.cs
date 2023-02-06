@@ -42,6 +42,7 @@ public class Root : MonoBehaviour
             Kill();
         }
         m_movement.Slowed = m_rootEndHitbox.IsInRoughDirt;
+        m_movement.BeingPushedDirection = m_rootEndHitbox.BeingPushedDirection;
 	}
 
 	internal Root[] Split(Root newRootPrefab)

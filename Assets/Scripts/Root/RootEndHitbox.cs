@@ -14,6 +14,10 @@ public class RootEndHitbox : MonoBehaviour
 	private bool m_isInRoughDirt = false;
 	public bool IsInRoughDirt => m_isInRoughDirt;
 
+	[SerializeField]
+	private Vector3 m_beingPushedDirection;
+	public Vector3 BeingPushedDirection => m_beingPushedDirection;
+
 	private void Start()
 	{
 		m_levelTilemapManager = LevelTilemapSingleton.Instance;
@@ -40,11 +44,18 @@ public class RootEndHitbox : MonoBehaviour
 		{
 			m_hasCollidedWithRock = true;
 		}
-		else if (detectedTile is StreamTile)
+		
+		if (detectedTile is StreamTile)
 		{
-			var rotation = detectedTilemap.GetTransformMatrix(tilePosition).rotation.eulerAngles;
+			var rotation = detectedTilemap.GetTransformMatrix(tilePosition).rotation;
             Debug.Log($"Stream Tile Rotation: {rotation}");
-		}
+            Vector3 direction = (rotation * Vector3.right).normalized;
+			m_beingPushedDirection = direction;
+        }
+		else
+		{
+            m_beingPushedDirection = Vector3.zero;
+        }
 
         m_isInRoughDirt = detectedTile is RoughDirtTile;
     }

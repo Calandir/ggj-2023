@@ -15,6 +15,8 @@ public class RootMover : MonoBehaviour
     private float m_slowedMultiplier = 0.7f;
     private float CurrentSlowedMultiplier => Slowed ? m_slowedMultiplier : 1f;
 
+    public Vector3 BeingPushedDirection { get; internal set; }
+
     [SerializeField]
     private GameObject m_debugTargetObj;
 
@@ -53,6 +55,12 @@ public class RootMover : MonoBehaviour
     {
         Vector3 movement = controlledMultiplier * m_growMultiplier * CurrentSlowedMultiplier * Time.deltaTime * transform.up;
         transform.position += movement;
+
+        if (BeingPushedDirection.magnitude > float.Epsilon)
+        {
+            Vector3 pushedMovement = 0.75f * Time.deltaTime * BeingPushedDirection;
+            transform.position += pushedMovement;
+        }
     }
     private void RootFinished(Root root)
     {
