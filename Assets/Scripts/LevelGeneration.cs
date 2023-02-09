@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,12 +26,42 @@ public class LevelGeneration : MonoBehaviour
 	[SerializeField] public int Y_SIZE;
 
 	private void Awake()
-	{
-		m_tilemap = GetComponent<Tilemap>();
+    {
+        GetPlayerPrefs();
+
+        m_tilemap = GetComponent<Tilemap>();
 		Generate();
 	}
 
-	void Generate()
+    private void GetPlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey("PROPORTION_WATER_AT_TOP"))
+		{
+			PROPORTION_WATER_AT_TOP = PlayerPrefs.GetFloat("PROPORTION_WATER_AT_TOP");
+        }
+        if (PlayerPrefs.HasKey("PROPORTION_WATER_AT_BOTTOM"))
+        {
+            PROPORTION_WATER_AT_BOTTOM = PlayerPrefs.GetFloat("PROPORTION_WATER_AT_BOTTOM");
+        }
+        if (PlayerPrefs.HasKey("PROPORTION_ROCKS_AT_TOP"))
+        {
+            PROPORTION_ROCKS_AT_TOP = PlayerPrefs.GetFloat("PROPORTION_ROCKS_AT_TOP");
+        }
+        if (PlayerPrefs.HasKey("PROPORTION_ROCKS_AT_BOTTOM"))
+        {
+            PROPORTION_ROCKS_AT_BOTTOM = PlayerPrefs.GetFloat("PROPORTION_ROCKS_AT_BOTTOM");
+        }
+        if (PlayerPrefs.HasKey("PROPORTION_ROUGHDIRT_AT_TOP"))
+        {
+            PROPORTION_ROUGHDIRT_AT_TOP = PlayerPrefs.GetFloat("PROPORTION_ROUGHDIRT_AT_TOP");
+        }
+        if (PlayerPrefs.HasKey("PROPORTION_ROUGHDIRT_AT_BOTTOM"))
+        {
+            PROPORTION_ROUGHDIRT_AT_BOTTOM = PlayerPrefs.GetFloat("PROPORTION_ROUGHDIRT_AT_BOTTOM");
+        }
+    }
+
+    void Generate()
 	{
 		BoundsInt bounds = new BoundsInt(xMin: X_MIN, yMin: Y_MIN, zMin: 0, sizeX: X_SIZE, sizeY: Y_SIZE, sizeZ: 1);
 		TileBase[] tileArray = new TileBase[X_SIZE * Y_SIZE];
