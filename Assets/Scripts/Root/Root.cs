@@ -57,8 +57,9 @@ public class Root : MonoBehaviour
         Finished();
         GameObject rootSplitObj = Instantiate(rootSplitPrefab);
         var splitPosition = transform.position + (transform.up * 0.05f);
-        var splitRotation = m_spline.Spline.Knots.Last().Rotation;
-        rootSplitObj.transform.SetPositionAndRotation(splitPosition, splitRotation);
+        rootSplitObj.transform.position = splitPosition;
+        Vector3 splitDirection = transform.position - (Vector3)(m_spline.Spline.Knots.Last().Position);
+        rootSplitObj.transform.up = splitDirection;
         Root rootLeft = Instantiate(newRootPrefab, transform.position, transform.rotation);
         rootLeft.Initialise();
         rootLeft.transform.localEulerAngles = new Vector3(
