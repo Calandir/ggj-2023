@@ -62,7 +62,7 @@ public class Root : MonoBehaviour
     private IEnumerator CheckMovementCoroutine()
     {
         float intervalSeconds = 1f;
-        float maxSecondsWithoutMovement = 3f;
+        float maxSecondsWithoutMovement = 2f;
 
         while (m_canGrow)
         {
@@ -127,6 +127,11 @@ public class Root : MonoBehaviour
         if (RootsController.Instance.ControlledRoot == this)
         {
             RootsController.Instance.SwitchRoot();
+        }
+
+        if (SFXSingleton.Instance != null)
+        {
+            SFXSingleton.Instance.PlayTearSFX();
         }
     }
 }

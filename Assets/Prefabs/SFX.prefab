@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8055943263831784631
 AudioSource:
@@ -145,3 +145,4 @@ MonoBehaviour:
   WaterClip1: {fileID: 8300000, guid: 738a28670d4bad64dab72c811ff6fd7d, type: 3}
   WaterClip2: {fileID: 8300000, guid: e87561baefce7c84983c2abaa33fbe0f, type: 3}
   WaterClip3: {fileID: 8300000, guid: 837b48ea15a44ea40be2235b9d5dd8a5, type: 3}
+  TearClip1: {fileID: 8300000, guid: 7adf547cf8265694eb21dd0f0e85bb29, type: 3}

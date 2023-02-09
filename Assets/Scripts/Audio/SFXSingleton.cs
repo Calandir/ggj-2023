@@ -12,7 +12,9 @@ public class SFXSingleton : MonoBehaviour
 	[SerializeField] public AudioClip WaterClip2;
 	[SerializeField] public AudioClip WaterClip3;
 
-	private void Awake()
+    [SerializeField] public AudioClip TearClip1;
+
+    private void Awake()
 	{
 		if (s_instance != null)
 		{
@@ -32,9 +34,14 @@ public class SFXSingleton : MonoBehaviour
 			case 1: AudioSource.PlayOneShot(WaterClip2); break;
 			case 2: AudioSource.PlayOneShot(WaterClip3); break;
 		}
-	}
+    }
 
-	private void OnDestroy()
+    public void PlayTearSFX()
+    {
+        AudioSource.PlayOneShot(TearClip1);
+    }
+
+    private void OnDestroy()
 	{
 		if (s_instance == this)
 		{
