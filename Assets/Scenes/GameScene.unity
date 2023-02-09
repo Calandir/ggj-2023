@@ -542,26 +542,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2108129134016085862, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
-      propertyPath: m_TileSpriteArray.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108129134016085862, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[7].m_Data
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108129134016085862, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108129134016085862, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
-      propertyPath: m_TileSpriteArray.Array.data[7].m_RefCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108129134016085862, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
-      propertyPath: m_Tiles.Array.data[212].second.m_TileSpriteIndex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4485656353674174225, guid: 4fc35ee5ca5681d47a70619a9e195b03, type: 3}
       propertyPath: m_Name
       value: Grid

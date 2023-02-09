@@ -756,6 +756,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7739243000726711569, guid: 40f85ffe37daadc45acf719907b4482e, type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739243000726711569, guid: 40f85ffe37daadc45acf719907b4482e, type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7739243000726711570, guid: 40f85ffe37daadc45acf719907b4482e, type: 3}
       propertyPath: m_Name
       value: GroundBorder
