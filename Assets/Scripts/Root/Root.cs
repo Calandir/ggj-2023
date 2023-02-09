@@ -35,10 +35,19 @@ public class Root : MonoBehaviour
     [SerializeField]
     private SplineContainer m_spline;
 
+    [SerializeField]
+    private Vector3 m_lastPosition;
+    [SerializeField]
+    private float m_movementDelta;
+    [SerializeField]
+    private float m_secondsWithoutMovement;
+
     private void Start()
 	{
 		m_rootEndHitbox = GetComponentInChildren<RootEndHitbox>(includeInactive: true);
-	}
+
+        StartCoroutine(CheckMovementCoroutine());
+    }
 
 	private void Update()
 	{
@@ -48,9 +57,32 @@ public class Root : MonoBehaviour
         }
         m_movement.Slowed = m_rootEndHitbox.IsInRoughDirt;
         m_movement.BeingPushedDirection = m_rootEndHitbox.BeingPushedDirection;
-	}
+    }
 
-	internal Root[] Split(Root newRootPrefab, GameObject rootSplitPrefab)
+    private IEnumerator CheckMovementCoroutine()
+    {
+        float intervalSeconds = 1f;
+        float maxSecondsWithoutMovement = 3f;
+
+        while (m_canGrow)
+        {
+            m_movementDelta = (transform.position - m_lastPosition).magnitude;
+            if (m_movementDelta < 0.1f)
+            {
+                m_secondsWithoutMovement += intervalSeconds;
+                if (m_secondsWithoutMovement > maxSecondsWithoutMovement)
+                {
+                    Kill();
+                }
+            }
+
+            m_lastPosition = transform.position;
+
+            yield return new WaitForSeconds(intervalSeconds);
+        }
+    }
+
+    internal Root[] Split(Root newRootPrefab, GameObject rootSplitPrefab)
     {
         WaterManager.Instance.SpendWater(WaterManager.Instance.WaterLossPerSplit);
         Debug.Log("Split");
